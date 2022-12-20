@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 public class registro extends AppCompatActivity {
 
-    private EditText etNewUser, etPass;
+    private TextInputLayout tilUsername, tilContrasena, tilPregunta, tilRespuesta;
     private Button btnVolver, btnGuardar, btnSalir;
 
     @Override
@@ -43,11 +44,13 @@ public class registro extends AppCompatActivity {
     }
     private void referencias() {
 
-        etNewUser = findViewById(R.id.etNewUser);
-        etPass = findViewById(R.id.etPass);
+        tilUsername = findViewById(R.id.tilUsername);
+        tilContrasena = findViewById(R.id.tilContrasena);
+        tilPregunta = findViewById(R.id.tilPregunta);
+        tilRespuesta = findViewById(R.id.tilRespuesta);
         btnVolver = findViewById(R.id.btnVolver);
         btnGuardar = findViewById(R.id.btnGuardar);
-        btnSalir = findViewById(R.id.btnSalir);
+        btnSalir = findViewById(R.id.btnEnviar);
 
     }
 

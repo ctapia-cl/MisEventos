@@ -12,7 +12,8 @@ public class AdministradorBaseDatos extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table clientes ()");
 
     }
 

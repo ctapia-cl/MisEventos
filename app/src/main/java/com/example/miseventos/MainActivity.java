@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class MainActivity extends AppCompatActivity {
-        private EditText etUsuario, etContrasena;
+        private TextInputLayout tilUsuario, tilPass;
         private Button btnIngresar, btnRegistrar;
         private TextView tvRecuperarpass;
 
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void referencias() {
-        etUsuario = findViewById(R.id.etUsuario);
-        etContrasena = findViewById(R.id.etContrasena);
+        tilUsuario = findViewById(R.id.tilUsuario);
+        tilPass = findViewById(R.id.tilPass);
         btnIngresar = findViewById(R.id.btnIngresar);
         btnRegistrar = findViewById(R.id.btnRegistrar);
         tvRecuperarpass = findViewById(R.id.tvRecuperarpass);

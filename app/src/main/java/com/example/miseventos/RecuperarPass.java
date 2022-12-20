@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class RecuperarPass extends AppCompatActivity {
 
-    private EditText etIngusuario, etNewpass;
-    private Button btnVolver, btnSalir;
+    private TextInputLayout tilIngusuario, tilIngnewpass;
+    private Button btnVolver, btnEnviar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +37,14 @@ public class RecuperarPass extends AppCompatActivity {
                 mostrarprimeraActividad();
             }
         });
-        btnSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
     }
     private void referencias() {
 
-        etIngusuario = findViewById(R.id.etIngusuario);
-        etNewpass = findViewById(R.id.etNewpass);
+        tilIngusuario = findViewById(R.id.tilIngusuario);
+        tilIngnewpass = findViewById(R.id.tilIngnewpass);
         btnVolver = findViewById(R.id.btnVolver);
-        btnSalir = findViewById(R.id.btnSalir);
+        btnEnviar = findViewById(R.id.btnEnviar);
 
     }
 }
