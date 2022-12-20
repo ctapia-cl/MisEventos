@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void mostrarterceraactividad(){
-        Intent terceraPantalla = new Intent(this,RecuperarPass.class);
+        Intent terceraPantalla = new Intent(this,ValidarUsuario.class);
         startActivity(terceraPantalla);
 
     }
