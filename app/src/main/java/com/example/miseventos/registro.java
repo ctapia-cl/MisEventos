@@ -32,12 +32,6 @@ public class registro extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarprimeraActividad();
-            }
-        });
-        btnSalir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 finish();
             }
         });
@@ -50,7 +44,7 @@ public class registro extends AppCompatActivity {
         tilRespuesta = findViewById(R.id.tilRespuesta);
         btnVolver = findViewById(R.id.btnVolver);
         btnGuardar = findViewById(R.id.btnGuardar);
-        btnSalir = findViewById(R.id.btnEnviar);
+        btnSalir = findViewById(R.id.btnGuardar);
 
     }
 

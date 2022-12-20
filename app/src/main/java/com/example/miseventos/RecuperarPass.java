@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -34,7 +33,7 @@ public class RecuperarPass extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mostrarprimeraActividad();
+                finish();
             }
         });
 
@@ -44,7 +43,7 @@ public class RecuperarPass extends AppCompatActivity {
         tilIngusuario = findViewById(R.id.tilIngusuario);
         tilIngnewpass = findViewById(R.id.tilIngnewpass);
         btnVolver = findViewById(R.id.btnVolver);
-        btnEnviar = findViewById(R.id.btnEnviar);
+        btnEnviar = findViewById(R.id.btnGuardar);
 
     }
 }
