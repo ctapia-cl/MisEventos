@@ -26,6 +26,7 @@ public class registro extends AppCompatActivity {
     private String[] preguntaSecreta;
     private ArrayAdapter adapterPregunta;
 
+
     //Usuarios
     private ArrayList<Usuarios> losUsuarios;
 
