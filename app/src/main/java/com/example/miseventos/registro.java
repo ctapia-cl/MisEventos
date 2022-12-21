@@ -65,7 +65,7 @@ public class registro extends AppCompatActivity {
                 Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_SHORT).show();
             }else{
               //  userName.setError("Rut ya está ingresado");
-                Toast.makeText(registro.this, "NOOOO Grabado exitosamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(registro.this, "NOOOO Grabado", Toast.LENGTH_SHORT).show();
 
             }
         }
