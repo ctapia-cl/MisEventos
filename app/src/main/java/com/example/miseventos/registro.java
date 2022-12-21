@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -65,25 +66,26 @@ public class registro extends AppCompatActivity {
 
     private void grabarUsuario(){
         String username, contrasena, pregunta, respuesta = "";
-        Integer userNameOk = 1;
+        boolean userNameOk = true;
 
         username = tilNombreUsuario.getEditText().getText().toString();
         contrasena = tilContrasena.getEditText().getText().toString();
         pregunta = spnPregunta.getSelectedItem().toString();
         respuesta = tilRespuesta.getEditText().getText().toString();
 
-        for(Usuarios u : losUsuarios){
-            if(u.getUsername().equals(username)) {
-                userNameOk = 0;
+        for(Usuarios u : losUsuarios) {
+            if (u.getUsername().equals(username)) {
+                userNameOk = false;
                 Toast.makeText(registro.this, "Usuario ya se encuentra registrado", Toast.LENGTH_LONG).show();
-
+                break;
             }
         }
         if(username.isEmpty() || contrasena.isEmpty() || spnPregunta.getSelectedItemPosition() == 0 || respuesta.isEmpty()){
-            //userName.setError("Tiene errores de validación");
+            //username.setError("Tiene errores de validación");
             Toast.makeText(registro.this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
+
         }else {
-            if(userNameOk==1) {
+            if(userNameOk) {
                 Usuarios uss = new Usuarios(username, contrasena, pregunta, respuesta);
                 losUsuarios.add(uss);
 
@@ -93,7 +95,6 @@ public class registro extends AppCompatActivity {
                 Log.i("TAG_","usuario registrado " + username);
                 mostrarprimeraActividad();
             }else{
-              //  userName.setError("Rut ya está ingresado");
                 Toast.makeText(registro.this, "Usuario ya se encuentra registrado", Toast.LENGTH_LONG).show();
             }
         }
