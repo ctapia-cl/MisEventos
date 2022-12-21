@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
@@ -44,7 +43,6 @@ public class registro extends AppCompatActivity {
         referencias();
         eventos();
         obtenerDatosUsuario();
-
     }
 
     private void obtenerDatosUsuario(){
@@ -116,7 +114,6 @@ public class registro extends AppCompatActivity {
         }
 
         //consultaSQL();
-
     }
 
     private void poblar() {
@@ -131,7 +128,6 @@ public class registro extends AppCompatActivity {
         //losUsuarios.add(new Usuarios("admin", "admin123", "Mes de nacimiento", "septiembre" ));
 
     }
-
 
     //region Eventos y referencias
     private void eventos(){
@@ -158,7 +154,6 @@ public class registro extends AppCompatActivity {
         btnVolver = findViewById(R.id.btnVolver);
         btnGuardar = findViewById(R.id.btnGuardar);
         tvIngdatos = findViewById(R.id.tvIngdatos);
-
 
         //adaptador de spinner
         adapterPregunta = new ArrayAdapter(this, android.R.layout.simple_spinner_item, preguntaSecreta);
