@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -63,10 +64,10 @@ public class registro extends AppCompatActivity {
                 //grabarBaseDatos(cli);
 
                 Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_SHORT).show();
+                Log.i("TAG_","usuario registrado " + userName);
             }else{
               //  userName.setError("Rut ya está ingresado");
                 Toast.makeText(registro.this, "NOOOO Grabado", Toast.LENGTH_SHORT).show();
-
             }
         }
     }
