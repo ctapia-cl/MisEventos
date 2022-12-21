@@ -45,7 +45,7 @@ public class RecuperarPass extends AppCompatActivity {
         tilIngusuario = findViewById(R.id.tilIngusuario);
         tilIngnewpass = findViewById(R.id.tilIngnewpass);
         btnVolver = findViewById(R.id.btnVolver);
-        btnEnviar = findViewById(R.id.btnGuardar);
+        btnEnviar = findViewById(R.id.btnEnviar);
         tvIngdatos2 = findViewById(R.id.tvIngdatos2);
 
     }

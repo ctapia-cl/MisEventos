@@ -34,7 +34,7 @@ public class ValidarUsuario extends AppCompatActivity {
     private void referencias() {
         etIngUsuario = findViewById(R.id.etIngUsuario);
         btnVolver = findViewById(R.id.btnVolver);
-        btnEnviar = findViewById(R.id.btnGuardar);
+        btnEnviar = findViewById(R.id.btnEnviar);
         tvIngData = findViewById(R.id.tvIngData);
     }
 }

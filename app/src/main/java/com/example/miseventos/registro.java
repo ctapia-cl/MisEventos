@@ -10,13 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
@@ -165,7 +163,7 @@ public class registro extends AppCompatActivity {
         spnPregunta = findViewById(R.id.spnPregunta);
         tilRespuesta = findViewById(R.id.tilRespuesta);
         btnVolver = findViewById(R.id.btnVolver);
-        btnGuardar = findViewById(R.id.btnGuardar);
+        btnGuardar = findViewById(R.id.btnEnviar);
         tvIngdatos = findViewById(R.id.tvIngdatos);
 
         //adaptador de spinner
