@@ -1,7 +1,10 @@
 package com.example.miseventos;
 
 public class Usuarios {
-    private String username, contrasena, pregunta, respuesta;
+    private String username;
+    private String contrasena;
+    private String pregunta;
+    private String respuesta;
 
     //region constructor
     public Usuarios(String username, String contrasena, String pregunta, String respuesta) {

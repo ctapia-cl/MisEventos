@@ -86,7 +86,7 @@ public class registro extends AppCompatActivity {
                 grabarBaseDatos(uss);
 
                 Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_SHORT).show();
-                Log.i("TAG_","usuario registrado " + userName);
+                Log.i("TAG_","usuario registrado " + username);
             }else{
               //  userName.setError("Rut ya está ingresado");
                 Toast.makeText(registro.this, "NOOOO Grabado", Toast.LENGTH_SHORT).show();
