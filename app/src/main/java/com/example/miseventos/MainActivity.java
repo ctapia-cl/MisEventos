@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             eventos();
         }
 
+
     private void mostrarsegundaactividad(){
         Intent segundaPantalla = new Intent(this,registro.class);
         startActivity(segundaPantalla);
@@ -42,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private void mostrarterceraactividad(){
         Intent terceraPantalla = new Intent(this,ValidarUsuario.class);
         startActivity(terceraPantalla);
+
+    }
+    private void mostrarregistroeventos(){
+        Intent cuartaPantalla = new Intent(this,registroEventos.class);
+        startActivity(cuartaPantalla);
 
     }
 
@@ -64,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                             ", contrasena " + c.getString(1));
 
                     if(c.getString(0).equals(usuario) && c.getString(1).equals(contrasena)){
-                        mostrarsegundaactividad();
+                        mostrarregistroeventos();
                     }
                 }while(c.moveToNext());
             }
