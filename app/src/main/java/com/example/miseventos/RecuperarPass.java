@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -13,6 +14,7 @@ public class RecuperarPass extends AppCompatActivity {
 
     private TextInputLayout tilIngusuario, tilIngnewpass;
     private Button btnVolver, btnEnviar;
+    private TextView tvIngdatos2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class RecuperarPass extends AppCompatActivity {
         tilIngnewpass = findViewById(R.id.tilIngnewpass);
         btnVolver = findViewById(R.id.btnVolver);
         btnEnviar = findViewById(R.id.btnGuardar);
+        tvIngdatos2 = findViewById(R.id.tvIngdatos2);
 
     }
 }

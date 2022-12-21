@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         private TextInputLayout tilUsuario, tilPass;
         private Button btnIngresar, btnRegistrar;
         private TextView tvRecuperarpass;
+        private ImageView ivAvatar;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar = findViewById(R.id.btnIngresar);
         btnRegistrar = findViewById(R.id.btnRegistrar);
         tvRecuperarpass = findViewById(R.id.tvRecuperarpass);
+        ivAvatar = findViewById(R.id.ivAvatar);
     }}
 
 

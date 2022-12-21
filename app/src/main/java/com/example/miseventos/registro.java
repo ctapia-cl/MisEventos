@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -19,6 +20,7 @@ public class registro extends AppCompatActivity {
     private TextInputLayout tilUsername, tilContrasena, tilRespuesta;
     private Button btnVolver, btnGuardar, btnSalir;
     private Spinner spnPregunta;
+    private TextView tvIngdatos;
 
     //spinner trabaja con adaptador para asignar importancia al evento
     private String[] preguntaSecreta;
@@ -113,6 +115,7 @@ public class registro extends AppCompatActivity {
         btnVolver = findViewById(R.id.btnVolver);
         btnGuardar = findViewById(R.id.btnGuardar);
         btnSalir = findViewById(R.id.btnGuardar);
+        tvIngdatos = findViewById(R.id.tvIngdatos);
 
 
         //adaptador de spinner

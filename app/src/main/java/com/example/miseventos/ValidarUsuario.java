@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ValidarUsuario extends AppCompatActivity {
     private EditText etIngUsuario;
     private Button btnVolver, btnEnviar;
+    private TextView tvIngData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +32,9 @@ public class ValidarUsuario extends AppCompatActivity {
 
     }
     private void referencias() {
-
         etIngUsuario = findViewById(R.id.etIngUsuario);
         btnVolver = findViewById(R.id.btnVolver);
         btnEnviar = findViewById(R.id.btnGuardar);
-
+        tvIngData = findViewById(R.id.tvIngData);
     }
 }
