@@ -65,7 +65,7 @@ public class registro extends AppCompatActivity {
 
     private void grabarUsuario(){
         String username, contrasena, pregunta, respuesta = "";
-        boolean userNameOk = true;
+        Integer userNameOk = 1;
 
         username = tilNombreUsuario.getEditText().getText().toString();
         contrasena = tilContrasena.getEditText().getText().toString();
@@ -74,15 +74,16 @@ public class registro extends AppCompatActivity {
 
         for(Usuarios u : losUsuarios){
             if(u.getUsername().equals(username)) {
-                userNameOk = false;
-                break;
+                userNameOk = 0;
+                Toast.makeText(registro.this, "Usuario ya se encuentra registrado", Toast.LENGTH_LONG).show();
+
             }
         }
         if(username.isEmpty() || contrasena.isEmpty() || spnPregunta.getSelectedItemPosition() == 0 || respuesta.isEmpty()){
             //userName.setError("Tiene errores de validación");
             Toast.makeText(registro.this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
         }else {
-            if(userNameOk == true) {
+            if(userNameOk==1) {
                 Usuarios uss = new Usuarios(username, contrasena, pregunta, respuesta);
                 losUsuarios.add(uss);
 
@@ -90,6 +91,7 @@ public class registro extends AppCompatActivity {
 
                 Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_LONG).show();
                 Log.i("TAG_","usuario registrado " + username);
+                mostrarprimeraActividad();
             }else{
               //  userName.setError("Rut ya está ingresado");
                 Toast.makeText(registro.this, "Usuario ya se encuentra registrado", Toast.LENGTH_LONG).show();
@@ -145,7 +147,7 @@ public class registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grabarUsuario();
-                mostrarprimeraActividad();
+
             }
         });
         btnVolver.setOnClickListener(new View.OnClickListener() {
