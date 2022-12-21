@@ -13,12 +13,12 @@ public class AdministradorBaseDatos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table clientes ()");
+        db.execSQL("create table usuarios (username text primary key, contrasena text, pregunta text, respuesta text)");
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 }

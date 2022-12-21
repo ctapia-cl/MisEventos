@@ -2,11 +2,15 @@ package com.example.miseventos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,8 +21,8 @@ import java.util.ArrayList;
 
 public class registro extends AppCompatActivity {
 
-    private TextInputLayout tilUsername, tilContrasena, tilRespuesta;
-    private Button btnVolver, btnGuardar, btnSalir;
+    private EditText etUsername, etPass, etRespuesta;
+    private Button btnVolver, btnGuardar;
     private Spinner spnPregunta;
     private TextView tvIngdatos;
 
@@ -29,6 +33,8 @@ public class registro extends AppCompatActivity {
     //Usuarios
     private ArrayList<Usuarios> losUsuarios;
 
+    private int indiceActual = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,32 +43,49 @@ public class registro extends AppCompatActivity {
         poblar();
         referencias();
         eventos();
+        obtenerDatosUsuario();
 
     }
 
+    private void obtenerDatosUsuario(){
+        if(indiceActual >= 0 && indiceActual < losUsuarios.size()) {
+            Usuarios uss = losUsuarios.get(indiceActual);
+            etUsername.setText(uss.getUsername());
+            etPass.setText(uss.getContrasena());
+            etRespuesta.setText(uss.getRespuesta());
+
+            if(uss.getPregunta().equals("Nombre de Mascota")) spnPregunta.setSelection(1);
+
+            if(uss.getPregunta().equals("Mes de nacimiento")) spnPregunta.setSelection(2);
+
+            if(uss.getPregunta().equals("Ciudad de nacimiento")) spnPregunta.setSelection(3);
+
+        }
+    }
+
     private void grabarUsuario(){
-        String userName, contrasena, pregunta, respuesta = "";
+        String username, contrasena, pregunta, respuesta = "";
         boolean userNameOk = true;
 
-        userName = tilUsername.getEditText().getText().toString();
-        contrasena = tilContrasena.getEditText().getText().toString();
+        username = etUsername.getText().toString();
+        contrasena = etPass.getText().toString();
         pregunta = spnPregunta.getSelectedItem().toString();
-        respuesta = tilRespuesta.getEditText().getText().toString();
+        respuesta = etRespuesta.getText().toString();
 
         for(Usuarios u : losUsuarios){
-            if(u.getNombre().equals(userName)) {
+            if(u.getUsername().equals(username)) {
                 userNameOk = false;
                 break;
             }
         }
-        if(userName.isEmpty() || contrasena.isEmpty() || spnPregunta.getSelectedItemPosition() == 0 || respuesta.isEmpty()){
+        if(username.isEmpty() || contrasena.isEmpty() || spnPregunta.getSelectedItemPosition() == 0 || respuesta.isEmpty()){
             //userName.setError("Tiene errores de validación");
         }else {
             if(userNameOk) {
-                Usuarios uss = new Usuarios(userName, contrasena, pregunta, respuesta);
+                Usuarios uss = new Usuarios(username, contrasena, pregunta, respuesta);
                 losUsuarios.add(uss);
 
-                //grabarBaseDatos(cli);
+                grabarBaseDatos(uss);
 
                 Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_SHORT).show();
             }else{
@@ -72,6 +95,30 @@ public class registro extends AppCompatActivity {
             }
         }
     }
+
+    public void grabarBaseDatos(Usuarios uss){
+        try{
+            AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
+            SQLiteDatabase miBD = adbd.getWritableDatabase();
+
+            //Forma android
+            ContentValues reg = new ContentValues();
+            reg.put("username", uss.getUsername());
+            reg.put("contrasena", uss.getContrasena());
+            reg.put("pregunta", uss.getPregunta());
+            reg.put("respuesta", uss.getRespuesta());
+
+            miBD.insert("usuarios", null, reg);
+
+            miBD.close();
+        }catch (Exception ex){
+            Log.e("TAG_", ex.toString());
+        }
+
+        //consultaSQL();
+
+    }
+
     private void poblar() {
         preguntaSecreta = new String[4];
 
@@ -81,15 +128,11 @@ public class registro extends AppCompatActivity {
         preguntaSecreta[3] = "Ciudad de nacimiento";
 
         losUsuarios = new ArrayList<Usuarios>();
-        losUsuarios.add(new Usuarios("admin", "admin123", "Mes de nacimiento", "septiembre" ));
+        //losUsuarios.add(new Usuarios("admin", "admin123", "Mes de nacimiento", "septiembre" ));
 
     }
 
-    private void mostrarprimeraActividad(){
-        Intent primeraPantalla = new Intent(this,MainActivity.class);
-        startActivity(primeraPantalla);
 
-    }
     //region Eventos y referencias
     private void eventos(){
 
@@ -108,13 +151,12 @@ public class registro extends AppCompatActivity {
     }
     private void referencias() {
 
-        tilUsername = findViewById(R.id.tilUsername);
-        tilContrasena = findViewById(R.id.tilContrasena);
+        etUsername = findViewById(R.id.etUsername);
+        etPass = findViewById(R.id.etPass);
         spnPregunta = findViewById(R.id.spnPregunta);
-        tilRespuesta = findViewById(R.id.tilRespuesta);
+        etRespuesta = findViewById(R.id.etRespuesta);
         btnVolver = findViewById(R.id.btnVolver);
         btnGuardar = findViewById(R.id.btnGuardar);
-        btnSalir = findViewById(R.id.btnGuardar);
         tvIngdatos = findViewById(R.id.tvIngdatos);
 
 

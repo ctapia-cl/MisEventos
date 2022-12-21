@@ -1,12 +1,12 @@
 package com.example.miseventos;
 
 public class Usuarios {
-    private String nombre, contraseña, pregunta, respuesta;
+    private String username, contrasena, pregunta, respuesta;
 
     //region constructor
-    public Usuarios(String nombre, String contraseña, String pregunta, String respuesta) {
-        this.nombre = nombre;
-        this.contraseña = contraseña;
+    public Usuarios(String username, String contrasena, String pregunta, String respuesta) {
+        this.username = username;
+        this.contrasena = contrasena;
         this.pregunta = pregunta;
         this.respuesta = respuesta;
     }
@@ -14,20 +14,16 @@ public class Usuarios {
 
     //region get and set
 
-    public String getNombre() {
-        return nombre;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setUsername(String nombre) { this.username = username; }
 
-    public String getContraseña() {
-        return contraseña;
-    }
+    public String getContrasena() { return contrasena;  }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getPregunta() {
