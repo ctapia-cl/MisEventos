@@ -8,12 +8,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
+
 public class registro extends AppCompatActivity {
 
-    private TextInputLayout tilUsername, tilContrasena, tilPregunta, tilRespuesta;
+    private TextInputLayout tilUsername, tilContrasena, tilRespuesta;
     private Button btnVolver, btnGuardar, btnSalir;
     private Spinner spnPregunta;
 
@@ -21,6 +24,8 @@ public class registro extends AppCompatActivity {
     private String[] preguntaSecreta;
     private ArrayAdapter adapterPregunta;
 
+    //Usuarios
+    private ArrayList<Usuarios> losUsuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,38 @@ public class registro extends AppCompatActivity {
 
     }
 
+    private void grabarUsuario(){
+        String userName, contrasena, pregunta, respuesta = "";
+        boolean userNameOk = true;
+
+        userName = tilUsername.getEditText().getText().toString();
+        contrasena = tilContrasena.getEditText().getText().toString();
+        pregunta = spnPregunta.getSelectedItem().toString();
+        respuesta = tilRespuesta.getEditText().getText().toString();
+
+        for(Usuarios u : losUsuarios){
+            if(u.getNombre().equals(userName)) {
+                userNameOk = false;
+                break;
+            }
+        }
+        if(userName.isEmpty() || contrasena.isEmpty() || spnPregunta.getSelectedItemPosition() == 0 || respuesta.isEmpty()){
+            //userName.setError("Tiene errores de validación");
+        }else {
+            if(userNameOk) {
+                Usuarios uss = new Usuarios(userName, contrasena, pregunta, respuesta);
+                losUsuarios.add(uss);
+
+                //grabarBaseDatos(cli);
+
+                Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_SHORT).show();
+            }else{
+              //  userName.setError("Rut ya está ingresado");
+                Toast.makeText(registro.this, "NOOOO Grabado exitosamente", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
     private void poblar() {
         preguntaSecreta = new String[4];
 
@@ -40,6 +77,10 @@ public class registro extends AppCompatActivity {
         preguntaSecreta[1] = "Nombre de Mascota";
         preguntaSecreta[2] = "Mes de nacimiento";
         preguntaSecreta[3] = "Ciudad de nacimiento";
+
+        losUsuarios = new ArrayList<Usuarios>();
+        losUsuarios.add(new Usuarios("admin", "admin123", "Mes de nacimiento", "septiembre" ));
+
     }
 
     private void mostrarprimeraActividad(){
@@ -49,6 +90,13 @@ public class registro extends AppCompatActivity {
     }
     //region Eventos y referencias
     private void eventos(){
+
+        btnGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grabarUsuario();
+            }
+        });
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
