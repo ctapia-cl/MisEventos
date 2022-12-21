@@ -16,11 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
 
 public class registro extends AppCompatActivity {
 
-    private EditText etUsername, etPass, etRespuesta;
+    private TextInputLayout tilNombreUsuario, tilContrasena, tilRespuesta;
     private Button btnVolver, btnGuardar;
     private Spinner spnPregunta;
     private TextView tvIngdatos;
@@ -48,9 +50,9 @@ public class registro extends AppCompatActivity {
     private void obtenerDatosUsuario(){
         if(indiceActual >= 0 && indiceActual < losUsuarios.size()) {
             Usuarios uss = losUsuarios.get(indiceActual);
-            etUsername.setText(uss.getUsername());
-            etPass.setText(uss.getContrasena());
-            etRespuesta.setText(uss.getRespuesta());
+            tilNombreUsuario.getEditText().setText(uss.getUsername());
+            tilContrasena.getEditText().setText(uss.getContrasena());
+            tilRespuesta.getEditText().setText(uss.getRespuesta());
 
             if(uss.getPregunta().equals("Nombre de Mascota")) spnPregunta.setSelection(1);
 
@@ -65,10 +67,10 @@ public class registro extends AppCompatActivity {
         String username, contrasena, pregunta, respuesta = "";
         boolean userNameOk = true;
 
-        username = etUsername.getText().toString();
-        contrasena = etPass.getText().toString();
+        username = tilNombreUsuario.getEditText().getText().toString();
+        contrasena = tilContrasena.getEditText().getText().toString();
         pregunta = spnPregunta.getSelectedItem().toString();
-        respuesta = etRespuesta.getText().toString();
+        respuesta = tilRespuesta.getEditText().getText().toString();
 
         for(Usuarios u : losUsuarios){
             if(u.getUsername().equals(username)) {
@@ -78,18 +80,19 @@ public class registro extends AppCompatActivity {
         }
         if(username.isEmpty() || contrasena.isEmpty() || spnPregunta.getSelectedItemPosition() == 0 || respuesta.isEmpty()){
             //userName.setError("Tiene errores de validación");
+            Toast.makeText(registro.this, "Debe llenar todos los campos", Toast.LENGTH_LONG).show();
         }else {
-            if(userNameOk) {
+            if(userNameOk == true) {
                 Usuarios uss = new Usuarios(username, contrasena, pregunta, respuesta);
                 losUsuarios.add(uss);
 
                 grabarBaseDatos(uss);
 
-                Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_LONG).show();
                 Log.i("TAG_","usuario registrado " + username);
             }else{
               //  userName.setError("Rut ya está ingresado");
-                Toast.makeText(registro.this, "NOOOO Grabado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(registro.this, "Usuario ya se encuentra registrado", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -129,6 +132,12 @@ public class registro extends AppCompatActivity {
 
     }
 
+    private void mostrarprimeraActividad(){
+        Intent primeraPantalla = new Intent(this,MainActivity.class);
+        startActivity(primeraPantalla);
+
+    }
+
     //region Eventos y referencias
     private void eventos(){
 
@@ -136,6 +145,7 @@ public class registro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 grabarUsuario();
+                mostrarprimeraActividad();
             }
         });
         btnVolver.setOnClickListener(new View.OnClickListener() {
@@ -147,10 +157,10 @@ public class registro extends AppCompatActivity {
     }
     private void referencias() {
 
-        etUsername = findViewById(R.id.etUsername);
-        etPass = findViewById(R.id.etPass);
+        tilNombreUsuario = findViewById(R.id.tilNombreUsuario);
+        tilContrasena = findViewById(R.id.tilContrasena);
         spnPregunta = findViewById(R.id.spnPregunta);
-        etRespuesta = findViewById(R.id.etRespuesta);
+        tilRespuesta = findViewById(R.id.tilRespuesta);
         btnVolver = findViewById(R.id.btnVolver);
         btnGuardar = findViewById(R.id.btnGuardar);
         tvIngdatos = findViewById(R.id.tvIngdatos);

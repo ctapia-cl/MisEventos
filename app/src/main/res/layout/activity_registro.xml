@@ -38,11 +38,11 @@
         android:id="@+id/spnPregunta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/etPass"
-        app:layout_constraintStart_toStartOf="@+id/etPass"
-        app:layout_constraintTop_toBottomOf="@+id/etPass"
+        app:layout_constraintEnd_toEndOf="@+id/tilContrasena"
+        app:layout_constraintStart_toStartOf="@+id/tilContrasena"
+        app:layout_constraintTop_toBottomOf="@+id/tilContrasena"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -57,43 +57,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilNombreUsuario"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Nombre de Usuario"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvIngdatos" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIngdatos">
 
-    <EditText
-        android:id="@+id/etPass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de usuario" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/etRespuesta"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilContrasena"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Respuesta a Pregunta"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnPregunta" />
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/tilNombreUsuario"
+        app:layout_constraintStart_toStartOf="@+id/tilNombreUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/tilNombreUsuario">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contrasena" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilRespuesta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/spnPregunta"
+        app:layout_constraintStart_toStartOf="@+id/spnPregunta"
+        app:layout_constraintTop_toBottomOf="@+id/spnPregunta">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
