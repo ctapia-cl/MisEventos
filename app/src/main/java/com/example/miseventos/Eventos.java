@@ -1,17 +1,19 @@
 package com.example.miseventos;
 
+import java.util.Date;
+
 public class Eventos {
     private String titulo;
-    private String fechaEvento;
+    private String fecha;
     private String lugar;
     private String importancia;
     private String observacion;
 
 
-    public Eventos(String titulo, String fechaEvento, String lugar, String importancia, String observacion) {
+    public Eventos(String titulo, String fecha, String lugar, String importancia, String observacion) {
 
         this.titulo = titulo;
-        this.fechaEvento = fechaEvento;
+        this.fecha = fecha;
         this.lugar = lugar;
         this.importancia = importancia;
         this.observacion = observacion;
@@ -25,12 +27,12 @@ public class Eventos {
         this.titulo = titulo;
     }
 
-    public String getFechaEvento() {
-        return fechaEvento;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setFechaEvento(String fechaEvento) {
-        this.fechaEvento = fechaEvento;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public String getLugar() {

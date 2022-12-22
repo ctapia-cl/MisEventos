@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class registroEventos extends AppCompatActivity {
-    private EditText etTitulo, etFechaEvento, etLugar, etObservacion;
+    private EditText etTitulo, etFecha, etLugar, etObservacion;
     private Spinner spnImportancia;
     private Button btnEnviar, btnSalir;
 
@@ -38,7 +38,7 @@ public class registroEventos extends AppCompatActivity {
 
     private void referencias() {
         etTitulo = findViewById(R.id.etTitulo);
-        etFechaEvento = findViewById(R.id.etFechaEvento);
+        etFecha = findViewById(R.id.etFecha);
         spnImportancia = findViewById(R.id.spnImportancia);
         btnEnviar = findViewById(R.id.btnEnviar);
         btnSalir = findViewById(R.id.btnSalir);
@@ -55,7 +55,9 @@ public class registroEventos extends AppCompatActivity {
 
     private void limpiarPantalla(){
         etTitulo.setText(""); etObservacion.setText(""); spnImportancia.setSelection(0);
-        etLugar.setText(""); etFechaEvento.setText("");
+        etLugar.setText(""); etFecha.setText("");
+        // tvPaginacion.setText("" + losClientes.size());
+        //indiceActual = -1;
     }
 
     private void grabarEvento(){
@@ -63,7 +65,7 @@ public class registroEventos extends AppCompatActivity {
         boolean tituloOk = true;
 
         titulo = etTitulo.getText().toString();
-        fecha= etFechaEvento.getText().toString();
+        fecha= etFecha.getText().toString();
         importancia = spnImportancia.getSelectedItem().toString();
         lugar = etLugar.getText().toString();
         observacion = etObservacion.getText().toString();

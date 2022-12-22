@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecuperarPass">
+    tools:context=".MuestraPass">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -25,13 +25,7 @@
             android:layout_marginRight="16dp"
             android:text="Retroceder" />
 
-        <Button
-            android:id="@+id/btnEnviar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_weight="4"
-            android:text="Enviar" />
+
     </LinearLayout>
 
     <TextView
@@ -39,7 +33,7 @@
         android:layout_width="215dp"
         android:layout_height="45dp"
         android:layout_marginTop="32dp"
-        android:text="Ingrese sus respuesta de la pregunta secreta"
+        android:text="Su contraseña es: "
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,16 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMuestraText" />
 
-    <EditText
-        android:id="@+id/etRespuesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Respuesta"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContrasena" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

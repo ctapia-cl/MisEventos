@@ -33,13 +33,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etFechaEvento"
+        android:id="@+id/etFecha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Fecha del Evento"
-        android:inputType="textPersonName"
+        android:inputType="date|datetime"
         app:layout_constraintEnd_toEndOf="@+id/etTitulo"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etTitulo"
@@ -53,9 +53,9 @@
         android:ems="10"
         android:hint="Lugar"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/etFechaEvento"
-        app:layout_constraintStart_toStartOf="@+id/etFechaEvento"
-        app:layout_constraintTop_toBottomOf="@+id/etFechaEvento" />
+        app:layout_constraintEnd_toEndOf="@+id/etFecha"
+        app:layout_constraintStart_toStartOf="@+id/etFecha"
+        app:layout_constraintTop_toBottomOf="@+id/etFecha" />
 
     <EditText
         android:id="@+id/etObservacion"
