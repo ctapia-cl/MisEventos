@@ -15,6 +15,7 @@ public class AdministradorBaseDatos extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table usuarios (username text primary key, contrasena text, pregunta text, respuesta text)");
         db.execSQL("create table ultimoUsuario (usuario text primary key)");
+        db.execSQL("create table eventos (usuario text primary key, titulo text, fecha text, lugar text, importancia text, observacion text)");
 
     }
 
@@ -22,6 +23,7 @@ public class AdministradorBaseDatos extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
      db.execSQL("DROP TABLE IF EXISTS usuarios" );
      db.execSQL("DROP TABLE IF EXISTS ultimoUsuario" );
+     db.execSQL("DROP TABLE IF EXISTS eventos" );
      onCreate(db);
     }
 }

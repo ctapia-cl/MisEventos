@@ -1,5 +1,8 @@
 package com.example.miseventos;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,9 +63,44 @@ public class registroEventos extends AppCompatActivity {
         //indiceActual = -1;
     }
 
+
+    //region consulta al usuario en linea
+    private void consultaUsuario(){
+
+        AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
+        SQLiteDatabase miBD = adbd.getWritableDatabase();
+        try {
+            Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by usuario desc", null);
+            if(c.moveToFirst()){
+
+            }
+        }catch (Exception ex){
+            Log.e("TAG_", ex.toString());
+        }finally {
+            miBD.close();
+        }
+    }
+    //endregion
+
     private void grabarEvento(){
-        String titulo, fecha, lugar, importancia, observacion = "";
+        String titulo, fecha, lugar, importancia, observacion,usuario = "";
         boolean tituloOk = true;
+
+        //region extrae usuario en linea
+        AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
+        SQLiteDatabase miBD = adbd.getWritableDatabase();
+        try {
+            Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by usuario desc", null);
+            if(c.moveToFirst()){
+                usuario = c.getString(0);
+            }
+        }catch (Exception ex){
+            Log.e("TAG_", ex.toString());
+        }finally {
+            miBD.close();
+        }
+
+        //endregion
 
         titulo = etTitulo.getText().toString();
         fecha= etFecha.getText().toString();
@@ -83,10 +121,10 @@ public class registroEventos extends AppCompatActivity {
 
         }else {
             if(tituloOk) {
-                Eventos event = new Eventos(titulo, fecha, lugar, importancia, observacion);
+                Eventos event = new Eventos(titulo, fecha, lugar, importancia, observacion,usuario);
                 losEventos.add(event);
 
-                //grabarBaseDatos(event);
+                grabarBaseDatos(event);
 
                 Toast.makeText(registroEventos.this, "Grabado exitosamente", Toast.LENGTH_LONG).show();
                 Log.i("TAG_","evento registrado " + titulo);
@@ -97,6 +135,30 @@ public class registroEventos extends AppCompatActivity {
         }
     }
 
+    public void grabarBaseDatos(Eventos event){
+        try{
+            AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
+            SQLiteDatabase miBD = adbd.getWritableDatabase();
+
+            //Forma android
+            ContentValues reg = new ContentValues();
+            reg.put("titulo", event.getTitulo());
+            reg.put("fecha", event.getFecha());
+            reg.put("lugar", event.getLugar());
+            reg.put("importancia", event.getImportancia());
+            reg.put("observacion", event.getObservacion());
+            reg.put("usuario", event.getUsuario());
+
+
+            miBD.insert("eventos", null, reg);
+
+            miBD.close();
+        }catch (Exception ex){
+            Log.e("TAG_", ex.toString());
+        }
+
+        //consultaSQL();
+    }
 
 
     private void poblar() {

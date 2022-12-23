@@ -8,15 +8,24 @@ public class Eventos {
     private String lugar;
     private String importancia;
     private String observacion;
+    private String usuario;
 
-
-    public Eventos(String titulo, String fecha, String lugar, String importancia, String observacion) {
+    public Eventos(String titulo, String fecha, String lugar, String importancia, String observacion, String usuario) {
 
         this.titulo = titulo;
         this.fecha = fecha;
         this.lugar = lugar;
         this.importancia = importancia;
         this.observacion = observacion;
+        this.usuario = usuario;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getTitulo() {
