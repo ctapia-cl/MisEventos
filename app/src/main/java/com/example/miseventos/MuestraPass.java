@@ -47,7 +47,7 @@ public class MuestraPass extends AppCompatActivity {
                 do{
                     Log.d("TAG_", "respuesta " + c.getString(3) +
                             ", contrasena " + c.getString(1));
-
+    //commit realizado 2.0
                     if(c.getString(3).equals(infoRespuesta) && c.getString(0).equals(infoUsuario)){
                         tvContrasena.setText(c.getString(1));
 
