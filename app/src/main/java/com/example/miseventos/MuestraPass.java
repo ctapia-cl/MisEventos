@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MuestraPass extends AppCompatActivity {
 
@@ -29,8 +30,13 @@ public class MuestraPass extends AppCompatActivity {
     //region extraccion BD
 
     private void consultaSQL(){
+        //Recibo la respuesta de la pregunta secreta
         Bundle recibeRespuesta = getIntent().getExtras();
         String infoRespuesta = recibeRespuesta.getString("respuesta");
+
+        //recibo nuevamente el usuario
+        Bundle recibeUsuario = getIntent().getExtras();
+        String infoUsuario = recibeUsuario.getString("usuario");
 
         AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
         SQLiteDatabase miBD = adbd.getWritableDatabase();
@@ -42,7 +48,7 @@ public class MuestraPass extends AppCompatActivity {
                     Log.d("TAG_", "respuesta " + c.getString(3) +
                             ", contrasena " + c.getString(1));
 
-                    if(c.getString(3).equals(infoRespuesta) && ){
+                    if(c.getString(3).equals(infoRespuesta) && c.getString(0).equals(infoUsuario)){
                         tvContrasena.setText(c.getString(1));
 
                     }

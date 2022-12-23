@@ -89,7 +89,7 @@ public class registro extends AppCompatActivity {
 
                 grabarBaseDatos(uss);
 
-                Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_LONG).show();
+                //Toast.makeText(registro.this, "Grabado exitosamente", Toast.LENGTH_LONG).show();
                 Log.i("TAG_","usuario registrado " + username);
                 mostrarprimeraActividad();
             }else{
@@ -138,6 +138,7 @@ public class registro extends AppCompatActivity {
         startActivity(primeraPantalla);
 
     }
+
 
     //region Eventos y referencias
     private void eventos(){

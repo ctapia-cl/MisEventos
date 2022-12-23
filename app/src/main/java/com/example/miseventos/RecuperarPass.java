@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RecuperarPass extends AppCompatActivity {
 
@@ -53,7 +54,10 @@ public class RecuperarPass extends AppCompatActivity {
 
                     }
                 }while(c.moveToNext());
-            }
+            }/*else if (c.getString(0) != (infoUsuario)){
+                Toast.makeText(RecuperarPass.this, "Usuario no se encuentra registrado", Toast.LENGTH_LONG).show();
+                finish();
+            }*/
         }catch (Exception ex){
             Log.e("TAG_", ex.toString());
         }finally {
@@ -80,13 +84,17 @@ public class RecuperarPass extends AppCompatActivity {
 
                 Bundle entregausuario = new Bundle();
                 entregausuario.putString("usuario", infoUsuario);
+
                 //endregion
 
                 Bundle respuesta = new Bundle();
                 respuesta.putString("respuesta", etRespuesta.getText().toString());
 
                 Intent intent = new Intent(RecuperarPass.this, MuestraPass.class);
+
                 intent.putExtras(respuesta);
+                intent.putExtras(entregausuario);
+
                 startActivity(intent);
 
 
