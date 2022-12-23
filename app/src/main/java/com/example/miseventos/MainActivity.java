@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
 
             referencias();
+            consultaUsuario();
             eventos();
 
         }
@@ -53,28 +54,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(cuartaPantalla);
 
     }
+//region mostrar ultimo usuario
+private void consultaUsuario(){
 
-    public void grabarUsuarioBaseDatos(){
-        String usuario = tilUsuario.getEditText().getText().toString();
-/*
-        try{
-            AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
-            SQLiteDatabase miBD = adbd.getWritableDatabase();
-
-            //Forma android
-            ContentValues reg = new ContentValues();
-            reg.put("usuario", usuario);
-
-            miBD.insert("ultimoUsuario", null, reg);
-
-            miBD.close();
-        }catch (Exception ex){
-            Log.e("TAG_", ex.toString());
+    AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
+    SQLiteDatabase miBD = adbd.getWritableDatabase();
+    try {
+        Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by usuario desc", null);
+        if(c.moveToFirst()){
+            tilUsuario.getEditText().setText(c.getString(0));
         }
-
-        //consultaSQL();*/
+    }catch (Exception ex){
+        Log.e("TAG_", ex.toString());
+    }finally {
+        miBD.close();
     }
-
+}
+    //endregion
     //region extraccion BD
 
     private void consultaSQL(){
