@@ -1,6 +1,7 @@
 package com.example.miseventos;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 public class registroEventos extends AppCompatActivity {
     private EditText etTitulo, etFecha, etLugar, etObservacion;
     private Spinner spnImportancia;
-    private Button btnEnviar, btnSalir;
+    private Button btnEnviar, btnSalir, btnLista;
 
     //spinner trabaja con adaptador para asignar importancia al evento
     private String[] importanciaEvento;
@@ -48,6 +49,7 @@ public class registroEventos extends AppCompatActivity {
         etLugar = findViewById(R.id.etLugar);
         //btnEliminar = findViewById(R.id.btnEliminar);
         etObservacion = findViewById(R.id.etObservacion);
+        btnLista = findViewById(R.id.btnLista);
 
         //adaptador de spinner
         adapterImportancia = new ArrayAdapter(this, android.R.layout.simple_spinner_item, importanciaEvento);
@@ -128,6 +130,18 @@ public class registroEventos extends AppCompatActivity {
 
                 Toast.makeText(registroEventos.this, "Grabado exitosamente", Toast.LENGTH_LONG).show();
                 Log.i("TAG_","evento registrado " + titulo);
+
+                //region enviar usuario a Muestraeventos
+                Bundle usuario2 = new Bundle();
+                usuario2.putString("usuario", usuario);
+
+                Intent intent = new Intent(registroEventos.this, MuestraEventos.class);
+                intent.putExtras(usuario2);
+                startActivity(intent);
+
+                //endregion
+
+
                 limpiarPantalla();
             }else{
                 Toast.makeText(registroEventos.this, "Usuario ya se encuentra registrado", Toast.LENGTH_LONG).show();
@@ -174,11 +188,25 @@ public class registroEventos extends AppCompatActivity {
 
     }
 
+    private void mostrarlista(){
+        Intent pantallaLista = new Intent(this,MuestraEventos.class);
+        startActivity(pantallaLista);
+
+    }
+
     private void eventos() {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 grabarEvento();
+
+            }
+        });
+
+        btnLista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarlista();
 
             }
         });
@@ -189,4 +217,6 @@ public class registroEventos extends AppCompatActivity {
             }
         });
     }
+
+
 }

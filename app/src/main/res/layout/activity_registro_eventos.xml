@@ -96,4 +96,13 @@
             android:layout_weight="4"
             android:text="Enviar" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Ver todos mis eventos"
+        app:layout_constraintEnd_toEndOf="@+id/etObservacion"
+        app:layout_constraintTop_toBottomOf="@+id/etObservacion" />
 </androidx.constraintlayout.widget.ConstraintLayout>
