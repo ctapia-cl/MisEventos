@@ -14,6 +14,7 @@ public class AdministradorBaseDatos extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table usuarios (username text primary key, contrasena text, pregunta text, respuesta text)");
+        db.execSQL("create table ultimoUsuario (usuario text primary key)");
 
     }
 

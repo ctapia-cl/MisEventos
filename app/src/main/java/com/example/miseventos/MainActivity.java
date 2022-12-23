@@ -3,6 +3,7 @@ package com.example.miseventos;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -30,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
             referencias();
             eventos();
+
         }
 
 
@@ -51,9 +54,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void grabarUsuarioBaseDatos(){
+        String usuario = tilUsuario.getEditText().getText().toString();
+/*
+        try{
+            AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
+            SQLiteDatabase miBD = adbd.getWritableDatabase();
+
+            //Forma android
+            ContentValues reg = new ContentValues();
+            reg.put("usuario", usuario);
+
+            miBD.insert("ultimoUsuario", null, reg);
+
+            miBD.close();
+        }catch (Exception ex){
+            Log.e("TAG_", ex.toString());
+        }
+
+        //consultaSQL();*/
+    }
+
     //region extraccion BD
-
-
 
     private void consultaSQL(){
         String usuario = tilUsuario.getEditText().getText().toString();
@@ -70,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
                             ", contrasena " + c.getString(1));
 
                     if(c.getString(0).equals(usuario) && c.getString(1).equals(contrasena)){
+
+                        ContentValues reg = new ContentValues();
+                        reg.put("usuario", usuario);
+                        miBD.insert("ultimoUsuario", null, reg);
+
                         mostrarregistroeventos();
                     }
                 }while(c.moveToNext());
