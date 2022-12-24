@@ -14,8 +14,8 @@ public class AdministradorBaseDatos extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table usuarios (username text primary key, contrasena text, pregunta text, respuesta text)");
-        db.execSQL("create table ultimoUsuario (usuario text primary key)");
-        db.execSQL("create table eventos (usuario text primary key, titulo text, fecha text, lugar text, importancia text, observacion text)");
+        db.execSQL("create table ultimoUsuario ( id integer primary key autoincrement, usuario text)");
+        db.execSQL("create table eventos (id integer primary key autoincrement,usuario text, titulo text, fecha text, lugar text, importancia text, observacion text)");
 
     }
 

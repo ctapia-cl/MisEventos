@@ -9,9 +9,11 @@ public class Eventos {
     private String importancia;
     private String observacion;
     private String usuario;
+    private Integer id;
 
-    public Eventos(String titulo, String fecha, String lugar, String importancia, String observacion, String usuario) {
+    public Eventos(Integer id, String usuario,String titulo, String fecha, String lugar, String importancia, String observacion) {
 
+        this.id = id;
         this.titulo = titulo;
         this.fecha = fecha;
         this.lugar = lugar;
@@ -19,6 +21,8 @@ public class Eventos {
         this.observacion = observacion;
         this.usuario = usuario;
     }
+
+
 
     public String getUsuario() {
         return usuario;
@@ -66,5 +70,16 @@ public class Eventos {
 
     public void setObservacion(String observacion) {
         this.observacion = observacion;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "titulo: " + titulo +
+                ", fecha: " + fecha +
+                ", lugar: " + lugar +
+                ", importancia: " + importancia +
+                ", observacion: " + observacion;
+
     }
 }

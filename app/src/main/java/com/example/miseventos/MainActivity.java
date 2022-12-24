@@ -60,9 +60,9 @@ private void consultaUsuario(){
     AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
     SQLiteDatabase miBD = adbd.getWritableDatabase();
     try {
-        Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by usuario desc", null);
+        Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by id desc", null);
         if(c.moveToFirst()){
-            tilUsuario.getEditText().setText(c.getString(0));
+            tilUsuario.getEditText().setText(c.getString(1));
         }
     }catch (Exception ex){
         Log.e("TAG_", ex.toString());

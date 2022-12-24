@@ -66,35 +66,18 @@ public class registroEventos extends AppCompatActivity {
     }
 
 
-    //region consulta al usuario en linea
-    private void consultaUsuario(){
-
-        AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
-        SQLiteDatabase miBD = adbd.getWritableDatabase();
-        try {
-            Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by usuario desc", null);
-            if(c.moveToFirst()){
-
-            }
-        }catch (Exception ex){
-            Log.e("TAG_", ex.toString());
-        }finally {
-            miBD.close();
-        }
-    }
-    //endregion
-
     private void grabarEvento(){
         String titulo, fecha, lugar, importancia, observacion,usuario = "";
+        Integer id = 0;
         boolean tituloOk = true;
 
         //region extrae usuario en linea
         AdministradorBaseDatos adbd = new AdministradorBaseDatos(this, "BDAplicacion", null, 1);
         SQLiteDatabase miBD = adbd.getWritableDatabase();
         try {
-            Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by usuario desc", null);
+            Cursor c = miBD.rawQuery("Select * from ultimoUsuario order by id desc", null);
             if(c.moveToFirst()){
-                usuario = c.getString(0);
+                usuario = c.getString(1);
             }
         }catch (Exception ex){
             Log.e("TAG_", ex.toString());
@@ -123,7 +106,7 @@ public class registroEventos extends AppCompatActivity {
 
         }else {
             if(tituloOk) {
-                Eventos event = new Eventos(titulo, fecha, lugar, importancia, observacion,usuario);
+                Eventos event = new Eventos(id,usuario,titulo, fecha, lugar, importancia, observacion);
                 losEventos.add(event);
 
                 grabarBaseDatos(event);
@@ -156,13 +139,12 @@ public class registroEventos extends AppCompatActivity {
 
             //Forma android
             ContentValues reg = new ContentValues();
+            reg.put("usuario", event.getUsuario());
             reg.put("titulo", event.getTitulo());
             reg.put("fecha", event.getFecha());
             reg.put("lugar", event.getLugar());
             reg.put("importancia", event.getImportancia());
             reg.put("observacion", event.getObservacion());
-            reg.put("usuario", event.getUsuario());
-
 
             miBD.insert("eventos", null, reg);
 
